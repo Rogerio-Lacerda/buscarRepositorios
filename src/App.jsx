@@ -1,7 +1,14 @@
+import { ThemeProvider } from '@emotion/react';
+import { theme } from './theme/theme';
+import { CssBaseline } from '@mui/material';
+
 function App() {
   return (
     <>
-      <h1>Buscar repositórios</h1>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <h1>Buscar repositórios</h1>
+      </ThemeProvider>
     </>
   );
 }
