@@ -10,12 +10,13 @@ export const theme = createTheme({
     },
     background: {
       default: '#292a2e',
-      paper: '#292a2e',
+      paper: '#0f1014',
     },
   },
   typography: {
     allVariants: {
       color: '#fff',
     },
+    fontFamily: 'monospace',
   },
 });
