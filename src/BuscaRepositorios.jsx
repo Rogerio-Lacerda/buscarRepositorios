@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Box,
   Button,
@@ -7,6 +7,7 @@ import {
   useTheme,
 } from '@mui/material';
 import InputForm from './InputForm';
+import { GlobalContext } from './GlobalContext/GlobalContext';
 
 const BuscaRepositorios = () => {
   const themeRef = useTheme();
