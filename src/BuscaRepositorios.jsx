@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ const BuscaRepositorios = () => {
   const themeRef = useTheme();
   const [user, setUser] = React.useState('');
   const smDowm = useMediaQuery(themeRef.breakpoints.down('sm'));
+  const { request } = React.useContext(GlobalContext);
 
   function handleChange({ target }) {
     if (target instanceof HTMLInputElement) {
@@ -21,17 +22,16 @@ const BuscaRepositorios = () => {
   }
 
   function handleSubmit(event) {
-    if (event instanceof Event) {
-      event.preventDefault();
-    }
-    console.log('funcionou');
+    event.preventDefault();
+    const urlApi = `https://api.github.com/users/${user}/repos`;
+    request(urlApi);
   }
 
   return (
     <Box
       component="section"
       sx={{
-        padding: themeRef.spacing(4, 1),
+        padding: themeRef.spacing(3, 1),
         width: '100%',
         display: 'grid',
         justifyContent: 'center',

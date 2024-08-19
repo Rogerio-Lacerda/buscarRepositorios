@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { Star } from '@mui/icons-material';
 
-const Repositorio = () => {
+const Repositorio = ({ nomeRepositorio, descricao, url, quantiEstrelas }) => {
   const themeRef = useTheme();
   const smDown = useMediaQuery(themeRef.breakpoints.down('sm'));
   return (
@@ -22,6 +22,7 @@ const Repositorio = () => {
           gap: themeRef.spacing(1),
           padding: themeRef.spacing(2.5),
           borderRadius: themeRef.spacing(0.5),
+          maxWidth: smDown ? '310px' : 'initial',
         }}
       >
         <Box
@@ -38,6 +39,7 @@ const Repositorio = () => {
               color: themeRef.palette.primary.main,
               marginRight: themeRef.spacing(1.5),
               position: 'relative',
+              wordBreak: 'break-all',
               '&::after': {
                 content: '""',
                 height: '5px',
@@ -49,7 +51,7 @@ const Repositorio = () => {
               },
             }}
           >
-            Animais Fantasticos
+            {nomeRepositorio}
           </Typography>
           <Box
             sx={{
@@ -67,21 +69,32 @@ const Repositorio = () => {
               }}
             />
             <Typography variant="h5" component="p" sx={{ opacity: '0.6' }}>
-              2
+              {quantiEstrelas}
             </Typography>
           </Box>
         </Box>
-        <Typography
-          variant="p"
-          component="p"
+        {descricao ? (
+          <Typography
+            variant="p"
+            component="p"
+            sx={{
+              marginBottom: themeRef.spacing(1),
+              marginTop: smDown ? '0' : themeRef.spacing(1),
+              fontSize: smDown ? '0.95rem' : '1rem',
+            }}
+          >
+            {descricao}
+          </Typography>
+        ) : null}
+        <Button
+          href={url}
+          target="_blank"
+          variant="contained"
           sx={{
-            marginBottom: themeRef.spacing(1),
-            marginTop: smDown ? '0' : themeRef.spacing(1),
+            maxWidth: 'max-content',
+            marginTop: descricao ? '' : themeRef.spacing(2),
           }}
         >
-          Teste
-        </Typography>
-        <Button href="#" variant="contained" sx={{ maxWidth: 'max-content' }}>
           Ir para repositório
         </Button>
       </ListItem>
