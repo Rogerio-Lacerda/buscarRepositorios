@@ -15,6 +15,7 @@ const useFetch = () => {
       if (!response.ok) throw new Error(`Error: ${response.status}`);
       json = await response.json();
     } catch (e) {
+      json = null;
       if (e instanceof Error) {
         setError(e.message);
       } else {
